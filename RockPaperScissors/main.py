@@ -16,10 +16,9 @@ def play():
 
     return 'You lost ;('
 
-def wins_game(player, opponent):
-    #return true if the player wins
+def wins_game(player, opponent): #return true if the player wins
     if (player == 'r' and opponent == 's') or (player == 'p' and opponent == 'r')\
          or (player == 's' and opponent == 'p'):
         return True
 
-print(play())
+print(play()) #To display the game for the user
