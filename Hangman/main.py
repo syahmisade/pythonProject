@@ -2,30 +2,33 @@ import random
 import string
 from words import words 
 
-#Need to read back everything because I still dont understand perfectly ;(
-
-def get_word(words):
-    word = random.choice(word) #will be choosing random word
-    while '-' in word and ' ' in word:
-        word = random.choice(word)
+def get_valid_word(words):
+    word = random.choice(words) #randomly choose the words
+    while '-' in word or ' ' in word:
+        word = random.choice(words)
     return word.upper()
 
 def hangman():
-    word = get_word(words)
-    letters = set(word)
+    word = get_valid_word(words)
+    word_letters = set(word) #letter in the word
     alphabet = set(string.ascii_uppercase)
-    used_letters = set() #what the user has guessed
+    used_letters = set() #the letters that the users have guessed (huruf yang sudah diteka)
 
-    #getting user input
-    while len(letters) > 0:
-        user_letter = input('Guess a letter: ').upper()
-        if user_letter in alphabet - used_letters:
+    while len(word_letters) > 0:
+        
+        #bangun dari tido, start dari sini
+
+        user_letter = input('Guess the letter: ').upper() #the letter that the user give + quesstion for user (teka huruf)
+        if user_letter in alphabet - used_letters: #if there is letter that the user havent guessed
             used_letters.add(user_letter)
-            if user_letter in letters:
-                letters.remove(user_letter)
+            if user_letter in word_letters:
+                word_letters.remove(user_letter)
 
-        elif letters in used_letters:
-            print('You have already used that character. Please try again.')
+        elif user_letter in used_letters:
+            print('You already used the letter. Please try again.')
         
         else:
             print('Invalid character. Please try again.')
+    
+    #it will get here when the len(word_letters) == 0
+
