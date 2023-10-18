@@ -13,11 +13,12 @@ def hangman():
     word_letters = set(word) #letter in the word
     alphabet = set(string.ascii_uppercase)
     used_letters = set() #the letters that the users have guessed (huruf yang sudah diteka)
+    lives = 6 #symbolic the amount of lives that you have to complete the game
 
-    while len(word_letters) > 0:
+    while len(word_letters) > 0 and lives > 0:
         #letter that already used
         #' '.join(['a', 'b', 'cd']) --> 'a b cd'
-        print('You have used this letter: ', ' '.join(used_letters))
+        print('You have',lives,'lives left and you have used this letter: ', ' '.join(used_letters))
 
         #what the current word is (ie W _ R D)
         word_list = [letter if letter in used_letters else '-' for letter in word]
@@ -28,6 +29,9 @@ def hangman():
             used_letters.add(user_letter)
             if user_letter in word_letters:
                 word_letters.remove(user_letter)
+            else:
+                lives = lives - 1 #take away a lives if wrong
+                print('Letters is not in the word.')
 
         elif user_letter in used_letters:
             print('You already used the letter. Please try again.')
@@ -35,6 +39,10 @@ def hangman():
         else:
             print('Invalid character. Please try again.')
     
-    #it will get here when the len(word_letters) == 0
+    #it will get here when the len(word_letters) == 0 OR when lives == 0
+    if lives == 0:
+        print("Sorry, You died. The word was", word)
+    else:
+        print('You guessed the word', word, '!!!')
 
 hangman()
