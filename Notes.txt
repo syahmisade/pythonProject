@@ -3,3 +3,7 @@ Python project that have been DONE!
     1.1. The user guess a number fromm the computer 
     1.2. The computer guess a number from the user
 2. Madlibs
+3. Rock Paper Scissors
+4. Hangman
+    4.1. The easy mode (main.py)
+    4.2. The challenging mode (hard.py)
