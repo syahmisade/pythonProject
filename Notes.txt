@@ -7,3 +7,4 @@ Python project that have been DONE!
 4. Hangman
     4.1. The easy mode (main.py)
     4.2. The challenging mode (hard.py)
+5. 
